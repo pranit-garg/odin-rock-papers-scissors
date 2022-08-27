@@ -7,6 +7,8 @@
 
 let choices = ["Rock", "Paper", "Scissors"]
 let computerSelection = getComputerChoice();
+
+//wil need to come back to see how this goes into playround
 let playerSelection  = prompt("Rock, Paper, Scissors? ");
 let rockRegex = /rock/i;
 let paperRegex = /paper/i;
@@ -50,5 +52,11 @@ let result = "";
         }
      }
 
-playRound(playerSelection, computerSelection);
-console.log(result);
+     function game() {
+        for (let i = 0; i < 5; i++) {
+            playRound();
+            playRound();
+        }
+     }
+
+// console.log(playRound(playerSelection, computerSelection));
