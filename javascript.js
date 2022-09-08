@@ -6,7 +6,6 @@
 
 
 let choices = ["Rock", "Paper", "Scissors"]
-let computerSelection = getComputerChoice();
 
 //wil need to come back to see how this goes into playround
 // let playerSelection  = prompt("Rock, Paper, Scissors? ");
@@ -16,74 +15,100 @@ let scissorsRegex = /scissors/i;
 let result = "";
 // console.log(computerSelection);
 
-    function getPlayerChoice() {
-        prompt("Rock, Paper, Scissors? ")
+   function getPlayerChoice() {
+        let playerSelection = prompt("Rock, Paper, Scissors? ")
+        console.log("Player chose:", playerSelection);
+        return playerSelection;
     }
 
      function getComputerChoice() {
         let computerChoice = choices[Math.floor(Math.random()*choices.length)];
+        console.log("Computer chose:", computerChoice);
         // console.log(computerChoice);
         return computerChoice;
      }
 
      let playerScore = 0;
      let computerScore = 0;
-     function playRound(playerSelection, computerSelection) {
-        if (rockRegex.test(playerSelection)) {
-            if (computerSelection == "Rock") {
-                console.log(computerScore);
-                return result = "It's a draw! You both had Rock";
-            } else if (computerSelection == "Paper") {
+     function playRound(getPlayerChoice, getComputerChoice) {
+        if (rockRegex.test(getPlayerChoice)) {
+            if (getComputerChoice == "Rock") {
+                console.log("computer's score", computerScore);
+                result = "It's a draw! You both had Rock";
+                console.log(result);
+                return result;
+            } else if (getComputerChoice == "Paper") {
                 // add score to computer since it won
                 computerScore++;
-                console.log(computerScore);
-                return result = "You lose! Paper beats Rock";
-            } else if (computerSelection == "Scissors") {
+                console.log("computer's score", computerScore);
+                result = "You lose! Paper beats Rock";
+                console.log(result);
+                return result;
+            } else if (getComputerChoice == "Scissors") {
                 // add score to player since you won
                 playerScore++;
-                console.log(computerScore);
-                return result = "You win! Rock beats Scissors";
+                console.log("computer's score", computerScore);
+                result = "You win! Rock beats Scissors";
+                console.log(result);
+                return result;
             }
 
-        } else if (paperRegex.test(playerSelection)) {
-            if (computerSelection == "Rock") {
+        } else if (paperRegex.test(getPlayerChoice)) {
+            if (getComputerChoice == "Rock") {
                 // add score to player since you won
                 playerScore++;
-                console.log(computerScore);
-                return result = "You win! Paper beats Rock";
-            } else if (computerSelection == "Paper") {
-                console.log(computerScore);
-                return result = "It's a draw! You both had Paper";
-            } else if (computerSelection == "Scissors") {
+                console.log("computer's score",computerScore);
+                result = "You win! Paper beats Rock";
+                console.log(result);
+                return result;
+            } else if (getComputerChoice == "Paper") {
+                console.log("computer's score", computerScore);
+                result = "It's a draw! You both had Paper";
+                console.log(result);
+                return result;
+            } else if (getComputerChoice == "Scissors") {
                 // add score to computer since you won
                 computerScore++;
-                console.log(computerScore);
-                return result = "You lose! Scissors beat Paper";
+                console.log("computer's score", computerScore);
+                result = "You lose! Scissors beat Paper";
+                console.log(result);
+                return result;
             }
 
-        } else if (scissorsRegex.test(playerSelection)) {
-            if (computerSelection == "Rock") {
+        } else if (scissorsRegex.test(getPlayerChoice)) {
+            if (getComputerChoice == "Rock") {
                 // add score to computer since you won
                 computerScore++;
-                console.log(computerScore);
-                return result = "You lose! Rock beats Scissors";
-            } else if (computerSelection == "Paper") {
+                console.log("computer's score", computerScore);
+                result = "You lose! Rock beats Scissors";
+                console.log(result);
+                return result;
+            } else if (getComputerChoice == "Paper") {
                 // add score to player since you won
                 playerScore++;
-                console.log(computerScore);
-                return result = "You win! Scissors beats Paper";
-            } else if (computerSelection == "Scissors") {
-                return result = "It's a draw! You both had Scissors";
+                console.log("computer's score", computerScore);
+                result = "You win! Scissors beats Paper";
+                console.log(result);
+                return result;
+            } else if (getComputerChoice == "Scissors") {
+                result = "It's a draw! You both had Scissors";
+                console.log(result);
+                return result;
             }
         }
      }
 
      function game() {
-        for (let i = 0; i < 2; i++) {
-            console.log(result);
-            getPlayerChoice();
-            playRound();
+        for (let i = 0; i < 5; i++) {
+            playRound(getPlayerChoice(), getComputerChoice());
             console.log("Computer Score:", computerScore, "Your Score:", playerScore);
+        }
+        if (playerScore > computerScore) {
+            console.log("You won the game!");
+        } else if (playerScore < computerScore) {
+            console.log("You lost, the computer won the game!");
+        } else {
+            console.log("It's a draw, no one won the game!");
         }
      }
 
